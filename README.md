@@ -57,12 +57,12 @@ Run the installer script with Node.js:
 node ./scripts/install.mjs
 ```
 
-The script copies agent templates and skill files into your VS Code prompts folder.
+The script copies agent templates and skill files into `.github/agents` and `.github/skills` in your workspace, making them automatically available in VS Code.
 
-If you want to install them into a different folder, set the environment variable first:
+If you want to install them into your global VS Code prompts folder instead, set the environment variable first:
 
 ```powershell
-$env:VSCODE_USER_PROMPTS_FOLDER = "D:\path\to\your\prompts"
+$env:VSCODE_USER_PROMPTS_FOLDER = "C:\Users\YourUsername\AppData\Roaming\Code\User\prompts"
 node ./scripts/install.mjs
 ```
 " 

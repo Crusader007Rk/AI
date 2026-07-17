@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const sourceRoot = path.resolve(__dirname, '..');
 
-const destinationRoot = process.env.VSCODE_USER_PROMPTS_FOLDER || path.join(process.env.APPDATA || '', 'Code', 'User', 'prompts');
+const destinationRoot = process.env.VSCODE_USER_PROMPTS_FOLDER || path.join(sourceRoot, '.github');
 
 const agentsSource = path.join(sourceRoot, 'agents');
 const skillsSource = path.join(sourceRoot, 'skills');
