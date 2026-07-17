@@ -16,11 +16,22 @@ const targetSkills = path.join(destinationRoot, 'skills');
 fs.mkdirSync(targetAgents, { recursive: true });
 fs.mkdirSync(targetSkills, { recursive: true });
 
-for (const entry of fs.readdirSync(agentsSource, { withFileTypes: true })) {
-  if (entry.isFile() && entry.name.endsWith('.md')) {
-    fs.copyFileSync(path.join(agentsSource, entry.name), path.join(targetAgents, entry.name));
+function copyDirectoryRecursive(sourceDir, targetDir) {
+  fs.mkdirSync(targetDir, { recursive: true });
+
+  for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+    const sourcePath = path.join(sourceDir, entry.name);
+    const targetPath = path.join(targetDir, entry.name);
+
+    if (entry.isDirectory()) {
+      copyDirectoryRecursive(sourcePath, targetPath);
+    } else if (entry.isFile() && entry.name.endsWith('.md')) {
+      fs.copyFileSync(sourcePath, targetPath);
+    }
   }
 }
+
+copyDirectoryRecursive(agentsSource, targetAgents);
 
 for (const entry of fs.readdirSync(skillsSource, { withFileTypes: true })) {
   if (!entry.isDirectory()) continue;

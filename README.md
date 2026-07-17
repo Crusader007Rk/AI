@@ -7,44 +7,58 @@ This workspace includes a simple structure for:
 
 ## Structure
 
-- agents/ - agent templates
+- agents/ - categorized agent templates
 - skills/ - reusable skill folders
 - scripts/ - install scripts
+- .github/instructions/ - repo-specific instructions generated for agent reuse
+
+## Agent layout
+
+The agents are now organized by flow category:
+
+- fetch/ - intake and request gathering agents
+- plan/ - planning and coordination agents
+- design/ - design and UX reasoning agents
+- implement/ - implementation and coding agents
+- review/ - validation and review agents
+- workflow/ - orchestrator and coordinator agents
+
+## Coordinator agent
+
+The repository now includes a coordinator agent named LunaWatch Tower.
+
+Its job is to:
+- analyze the repository once and create or update a repo instructions file,
+- reuse that file so future runs do not need to re-analyze the repo repeatedly,
+- delegate the work to the most suitable specialist agent based on the ticket and complexity.
+
+The generated instructions file lives at:
+- .github/instructions/repo-instructions.md
 
 ## Workflow Agents
 
-The workspace now includes a superhero-themed delivery workflow with agents for:
-- Jira ticket retrieval
-- ticket analysis
-- clarification when details are missing
-- planning and confirmation
-- implementation
-- branch, commit, and PR preparation
-- code review and security scanning
-- unit and end-to-end test execution
+The workspace includes a superhero-themed delivery workflow with agents for:
+- intake and ticket triage
+- planning and coordination
+- design direction and UX reasoning
+- implementation and coding support
+- review and validation
+- test execution and regression checks
 
 ## One-shot workflow
 
-Use the orchestrator prompt to run the full flow from ticket intake to PR preparation with a single prompt:
+Use the orchestrator prompt to run the full flow from ticket intake through delegation and repo guidance creation:
 
 ```text
-/alfred
+/lunawatch-tower
 ```
 
-Before running the main flow, you can first run the repository adaptor so the workflow is tailored to the repo's conventions:
-
-```text
-/batman
-```
-
-When you run Alfred, it will first invoke Batman, then ask whether you want a detailed analysis step before continuing.
-
-You can also use the simpler step-based prompts:
+You can also use the more focused prompts:
 
 ```text
 /fetch
-/analyse
 /plan
+/design
 /implement
 /review
 ```
