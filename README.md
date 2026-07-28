@@ -68,6 +68,10 @@ For an alias reference, see `.github/instructions/phase-aliases.md`.
 
 For the orchestrator architecture and agent wiring, see `.github/instructions/agent-architecture-diagram.md`.
 
+Embedded architecture diagram:
+
+![Agent Architecture](.github/instructions/agent-architecture.png)
+
 ## Architecture
 
 The orchestrator is adaptive: it selects only the phases required by the task.
