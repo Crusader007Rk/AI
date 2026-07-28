@@ -61,7 +61,19 @@ You can also use the more focused prompts:
 /design
 /implement
 /review
+/test
 ```
+
+For an alias reference, see `.github/instructions/phase-aliases.md`.
+
+For the orchestrator architecture and agent wiring, see `.github/instructions/agent-architecture-diagram.md`.
+
+## Architecture
+
+The orchestrator is adaptive: it selects only the phases required by the task.
+For example, a documentation change may use `/fetch` + `/implement` + `/review`, while a feature request may use `/fetch` + `/plan` + `/design` + `/implement` + `/review` + `/test`.
+
+The workflow also includes explicit user confirmation after fetch, plan, and design phases before moving to the next phase.
 
 ## Install
 
